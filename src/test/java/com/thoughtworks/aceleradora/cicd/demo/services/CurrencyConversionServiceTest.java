@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
+import static com.thoughtworks.aceleradora.cicd.demo.domain.CurrencyCode.BRL;
 import static com.thoughtworks.aceleradora.cicd.demo.domain.CurrencyCode.USD;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -19,4 +20,10 @@ class CurrencyConversionServiceTest {
         assertThat(result, equalTo(new BigDecimal("100.00")));
     }
 
+    @Test
+    void convertsWhenCurrencyIsSupported() {
+        BigDecimal result = service.convert(USD, BRL, "100");
+
+        assertThat(result, equalTo(new BigDecimal("503.00")));
+    }
 }
