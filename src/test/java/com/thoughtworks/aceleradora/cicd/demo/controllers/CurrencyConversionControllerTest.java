@@ -24,14 +24,14 @@ class CurrencyConversionControllerTest {
                 .perform(
                         get("/convert")
                                 .param("from", "USD")
-                                .param("to", "USD")
+                                .param("to", "BRL")
                                 .param("value", "100")
                 )
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.from", equalTo("USD")))
-                .andExpect(jsonPath("$.to", equalTo("USD")))
+                .andExpect(jsonPath("$.to", equalTo("BRL")))
                 .andExpect(jsonPath("$.value", equalTo("100")))
-                .andExpect(jsonPath("$.result", equalTo("100,00")));
+                .andExpect(jsonPath("$.result", equalTo("503.00")));
     }
 
     private MockMvc api() {

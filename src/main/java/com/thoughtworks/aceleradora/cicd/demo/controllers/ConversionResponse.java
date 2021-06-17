@@ -5,7 +5,6 @@ import com.thoughtworks.aceleradora.cicd.demo.domain.CurrencyCode;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
 import java.util.Locale;
 
 public final class ConversionResponse {
@@ -18,7 +17,8 @@ public final class ConversionResponse {
         this.from = from;
         this.to = to;
         this.value = value;
-        this.result = new DecimalFormat("#.00", new DecimalFormatSymbols(Locale.getDefault())).format(result);
+        Locale LOCALE_EN = Locale.ENGLISH;
+        this.result = new DecimalFormat("#.00", new DecimalFormatSymbols(LOCALE_EN)).format(result);
     }
 
     public CurrencyCode getFrom() {
